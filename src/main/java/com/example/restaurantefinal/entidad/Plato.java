@@ -1,6 +1,8 @@
 package com.example.restaurantefinal.entidad;
 
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="platos")
@@ -15,9 +17,10 @@ public class Plato {
     private Character rol;
 
     @Column(name="nombre", nullable = false)
+    @NotNull(message = "El campo nombre no puede ser nulo")
     private String nombrePlato;
 
-    @Column(name="rol", nullable = false)
+    @Column(name="precio")
     private Integer precio;
     @Column(name="descripcion", nullable = false)
     private String descripcion;
@@ -29,7 +32,7 @@ public class Plato {
     private String categoria;
 
     @Column(name="estado", nullable = false)
-    private Boolean estado;
+    private Boolean estado=true;
 
     @Column(name="sede")
     private String sede;
