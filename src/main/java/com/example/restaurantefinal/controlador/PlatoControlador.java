@@ -16,18 +16,14 @@ import java.util.List;
 @RestController
 @RequestMapping("restauranteAPI/plato")
 public class PlatoControlador {
-
     @Autowired
     private PlatoServicio servicio;
-
     @PostMapping
     public ResponseEntity<PlatoDTO> registrar(@RequestBody Plato datosPlatoEnviadoPorCLiente){
         try{
-
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(servicio.registrar(datosPlatoEnviadoPorCLiente));
-
         }catch(Exception error){
             PlatoErrorDTO respuestaError= new PlatoErrorDTO();
             respuestaError.setMensajeError(error.getMessage());
@@ -35,17 +31,14 @@ public class PlatoControlador {
                     .status(HttpStatus.BAD_REQUEST)
                     .body(respuestaError);
         }
-
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<PlatoDTO> actualizar(@PathVariable Long id, @RequestBody Plato datosPlatoEnviadoPorCLiente){
-
         try{
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(servicio.actualizarInformacion(datosPlatoEnviadoPorCLiente,id));
-
         }catch(Exception error){
             PlatoErrorDTO respuestaError= new PlatoErrorDTO();
             respuestaError.setMensajeError(error.getMessage());
@@ -53,17 +46,14 @@ public class PlatoControlador {
                     .status(HttpStatus.BAD_REQUEST)
                     .body(respuestaError);
         }
-
     }
 
     @PutMapping("/estado/{id}")
     public ResponseEntity<PlatoDTO> actualizarEstado(@PathVariable Long id, @RequestBody Plato datosPlatoEnviadoPorCLiente){
-
         try{
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(servicio.actualizarEstado(datosPlatoEnviadoPorCLiente,id));
-
         }catch(Exception error){
             PlatoErrorDTO respuestaError= new PlatoErrorDTO();
             respuestaError.setMensajeError(error.getMessage());
@@ -71,7 +61,6 @@ public class PlatoControlador {
                     .status(HttpStatus.BAD_REQUEST)
                     .body(respuestaError);
         }
-
     }
 
 
@@ -87,17 +76,14 @@ public class PlatoControlador {
 
             // Creamos una instancia de PlatoRespuestaPaginadaDTO y le pasamos la lista de platos obtenida del Page
             List<PlatoRespuestaDTO> listaPlatos = platosPaginados.getContent();
-
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(listaPlatos);
-
         }catch(Exception error){
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(null);
         }
-
     }
 
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class PlatoValidacion {
 
 
-    public boolean validarObligatorios(Plato plato) {
+    public static boolean validarObligatorios(Plato plato) {
         return  plato.getPrecio() == null || plato.getPrecio() < 0 ||
                 plato.getDescripcion() == null || plato.getDescripcion().isEmpty() ||
                 plato.getSede() == null || plato.getSede().isEmpty();
